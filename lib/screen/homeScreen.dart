@@ -11,7 +11,8 @@ class Home extends StatefulWidget {
 List<User> filterUser = [];
 
 class _HomeState extends State<Home> {
-  late Future<List<User>> usersFuture;
+// late Future<List<User>> usersFuture;
+
   Future<List<User>> users = getResponse();
   static Future<List<User>> getResponse() async {
     const url = 'https://mzcet.in/techquest23/returnjson.php';
@@ -27,7 +28,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff4eeee),
+      backgroundColor: const Color(0xffF0F0F0),
       appBar: AppBar(
         backgroundColor: const Color(0xff013d6f),
         elevation: 0,
@@ -70,7 +71,6 @@ class _HomeState extends State<Home> {
                         enabledBorder: InputBorder.none),
                     onChanged: (query) {
                       searchTeam(query);
-                      //----------------------------------------------------------------------------------------
                     },
                   ),
                 ),
@@ -106,7 +106,7 @@ class _HomeState extends State<Home> {
       (data) {
         return data.where((team) {
           final input = textValue.toLowerCase();
-          final teamname = team.teamName!.toLowerCase();
+          final teamname = team.teamName.toLowerCase();
           return teamname.contains(input);
         }).toList();
       },
@@ -114,7 +114,6 @@ class _HomeState extends State<Home> {
     searchtext.then((result) {
       setState(() {
         filterUser = result;
-        print(result[0].techquest_id);
       });
     });
   }

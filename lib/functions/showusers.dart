@@ -1,7 +1,4 @@
-import 'package:demo/reusables.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:demo/model/user.dart';
+import 'package:demo/export/import.dart';
 
 void showDetails(BuildContext context, User user) {
   showDialog(
@@ -12,8 +9,8 @@ void showDetails(BuildContext context, User user) {
             Center(
               child: SizedBox(
                 child: Container(
-                  width: MediaQuery.of(context).size.width / 1.4,
-                  height: MediaQuery.of(context).size.height / 1.05,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  height: MediaQuery.of(context).size.height / 1,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15)),
@@ -50,7 +47,7 @@ void showDetails(BuildContext context, User user) {
                           ),
                           const Divider(color: Colors.black),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Text(
                               "College Name : ${user.collegeName}",
                               style: GoogleFonts.poppins(
@@ -60,7 +57,7 @@ void showDetails(BuildContext context, User user) {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Text(
                               "Team Leader : ${user.teamLeader}",
                               style: GoogleFonts.poppins(
@@ -70,7 +67,7 @@ void showDetails(BuildContext context, User user) {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Text(
                               "Email : ${user.email}",
                               style: GoogleFonts.poppins(
@@ -80,7 +77,7 @@ void showDetails(BuildContext context, User user) {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 8),
+                            padding: const EdgeInsets.all(10.0),
                             child: Text(
                               "Phone Number : ${user.phoneNumber.toString()}",
                               style: GoogleFonts.poppins(
@@ -90,35 +87,35 @@ void showDetails(BuildContext context, User user) {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                            padding: const EdgeInsets.all(9.0),
                             child: CustomChecker(
                               event: user.designup,
                               eventname: "DesignUp",
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                            padding: const EdgeInsets.all(9.0),
                             child: CustomChecker(
                               event: user.knowlegde,
                               eventname: "KnowledgeBowl",
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                            padding: const EdgeInsets.all(9.0),
                             child: CustomChecker(
                               event: user.codelog,
                               eventname: "CodeLog",
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                            padding: const EdgeInsets.all(9.0),
                             child: CustomChecker(
                               event: user.techvein,
                               eventname: "TechVein",
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: CustomChecker(
                               event: user.quizarddy,
                               eventname: "Quizardry",
