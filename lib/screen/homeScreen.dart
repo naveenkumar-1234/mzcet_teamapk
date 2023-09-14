@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
                   } else if (snapshot.hasData) {
                     final users = snapshot.data!;
                     return buildUsers(
-                        (filterUser.isEmpty) ? users : filterUser);
+                        (filterUser.isEmpty && _searchController.value.text == "") ? users : filterUser);
                   } else {
                     return const Text("No data there");
                   }

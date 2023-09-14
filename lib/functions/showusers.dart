@@ -1,9 +1,11 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:demo/export/import.dart';
 
 void showDetails(BuildContext context, User user) {
   showDialog(
       context: context,
       builder: (BuildContext context) {
+
         return Stack(
           children: [
             Center(
@@ -19,15 +21,23 @@ void showDetails(BuildContext context, User user) {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Center(
-                            child: Text(
-                              user.teamName,
-                              style: GoogleFonts.robotoSlab(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FittedBox(
+                                fit: BoxFit.contain,
+                                child: AutoSizeText(
+                                  minFontSize: 25,
+                                  maxFontSize: 30,
+                                  user.teamName,
+                                  style: GoogleFonts.robotoSlab(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    // fontSize: 30,
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                           Center(
                             child: Padding(
@@ -50,40 +60,28 @@ void showDetails(BuildContext context, User user) {
                             padding: const EdgeInsets.all(8.5),
                             child: Text(
                               "College Name : ${user.collegeName}",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black),
+                              style: DefaultStyle,
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.5),
                             child: Text(
                               "Team Leader : ${user.teamLeader}",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black),
+                              style: DefaultStyle,
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.5),
                             child: Text(
                               "Email : ${user.email}",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black),
+                              style: DefaultStyle,
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.5),
                             child: Text(
                               "Phone Number : ${user.phoneNumber.toString()}",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black),
+                              style: DefaultStyle,
                             ),
                           ),
                           Padding(
@@ -121,6 +119,20 @@ void showDetails(BuildContext context, User user) {
                               eventname: "Quizardry",
                             ),
                           ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.5),
+                                child: Text("Screenshot : " , style: DefaultStyle,),
+                              ),
+                              (user.screenshot == null)?Text("Screenshot not attached" , style: DefaultStyle,):ElevatedButton(
+                                  style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xff013d6f),)),
+                                  onPressed: (){
+                                Navigator.pop(context);
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ScreenshotPage(imageUrl: user.screenshot!,)));
+                              }, child: Text("show"))
+                            ],
+                          )
                         ]),
                   ),
                 ),
@@ -129,4 +141,33 @@ void showDetails(BuildContext context, User user) {
           ],
         );
       });
+}
+
+class ScreenshotPage extends StatefulWidget {
+  final String imageUrl;
+  const ScreenshotPage({super.key , required this.imageUrl});
+
+  @override
+  State<ScreenshotPage> createState() => _ScreenshotPageState();
+}
+
+class _ScreenshotPageState extends State<ScreenshotPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Container(
+          color: Colors.white,
+          child: Image.network("https://mzcet.in/techquest23"+widget.imageUrl,
+          errorBuilder: (BuildContext context, Object exception,
+              StackTrace? stackTrace) {
+        return Text("Unable to load Image 😕",style: DefaultStyle,);
+        },
+          ),
+        ),
+      ),
+    );
+  }
+
+
 }

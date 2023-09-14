@@ -17,6 +17,7 @@ buildUsers(List<User> users) => Padding(
             },
             child: Card(
               child: ListTile(
+                trailing: (user.screenshot==null)?Icon(Icons.error,color: Colors.red,):Icon(Icons.verified_rounded,color: Colors.green,),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 leading: CircleAvatar(

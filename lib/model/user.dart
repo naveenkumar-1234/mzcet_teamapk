@@ -11,6 +11,7 @@ class User {
   final String? designup;
   final String? knowlegde;
   final String? quizarddy;
+  final String? screenshot;
 
   User({
     required this.techvein,
@@ -25,6 +26,7 @@ class User {
     required this.email,
     // ignore: non_constant_identifier_names
     required this.techquest_id,
+    required this.screenshot
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -39,7 +41,10 @@ class User {
         email: json['Email'],
         techquest_id: json['techquest_id'],
         teamName: json['TeamName'],
-        collegeName: json['CollegeName']);
+        collegeName: json['CollegeName'],
+        screenshot : json['ScreenShot']
+    );
+
   }
   // Map<String, dynamic> toJson() {
   //   final Map<String, dynamic> user = <String, dynamic>{};

@@ -23,6 +23,7 @@ class _CustomCheckerState extends State<CustomChecker> {
       ),
       Material(
         child: Checkbox(
+          activeColor: const Color(0xff013d6f),
             value: (widget.event == null) ? false : true, onChanged: (val) {}),
       )
     ]);
@@ -44,7 +45,7 @@ class _TeamDetailsState extends State<TeamDetails> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        '${widget.details.toString()}',
+        widget.details.toString(),
         style: GoogleFonts.poppins(
             fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
       ),
