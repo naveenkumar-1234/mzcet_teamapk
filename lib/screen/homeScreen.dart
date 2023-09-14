@@ -9,6 +9,7 @@ class Home extends StatefulWidget {
 }
 
 List<User> filterUser = [];
+final _searchController = TextEditingController();
 
 class _HomeState extends State<Home> {
 // late Future<List<User>> usersFuture;
@@ -63,6 +64,7 @@ class _HomeState extends State<Home> {
                   ),
                   width: MediaQuery.of(context).size.width / 1.1,
                   child: TextField(
+                    controller: _searchController,
                     decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(20.0),
                         suffixIcon: Icon(Icons.search),
@@ -71,6 +73,7 @@ class _HomeState extends State<Home> {
                         enabledBorder: InputBorder.none),
                     onChanged: (query) {
                       searchTeam(query);
+                      print(_searchController.text);
                     },
                   ),
                 ),
